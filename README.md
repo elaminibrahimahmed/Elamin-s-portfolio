@@ -16,7 +16,7 @@ This is my personal portfolio website, built to showcase my projects, skills, an
 - Git & GitHub
 
 ## 🌐 Live Demo
-https://ELAMIN-IBRAHIM-AHMED.github.io/my-portfolio
+https://elaminibrahimahmed.github.io/my-portfolio
 
 ## 📁 Purpose
 This portfolio is built to:
