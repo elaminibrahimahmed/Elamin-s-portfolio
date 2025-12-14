@@ -1,0 +1,556 @@
+/* ============================
+   IMPORT FONTS & ROOT VARIABLES
+============================ */
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap");
+
+:root {
+  --bg: #05070f;
+  --card: rgba(255, 255, 255, 0.05);
+  --border: rgba(255, 255, 255, 0.08);
+  --accent: #00eaff;
+  --text: #e8f7ff;
+  --muted: #8fa7b8;
+}
+
+body.light-mode {
+  --bg: #eaeff5;
+  --card: rgba(255, 255, 255, 0.6);
+  --border: rgba(0, 0, 0, 0.1);
+  --text: #0c1a25;
+  --muted: #44535f;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  overflow-x: hidden;
+  line-height: 1.6;
+}
+
+/* ============================
+   HEADER
+============================ */
+header {
+  position: sticky;
+  top: 0;
+  padding: 20px 40px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  backdrop-filter: blur(10px);
+  background: rgba(0, 0, 0, 0.2);
+  z-index: 50;
+}
+
+.logo {
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: var(--accent);
+}
+
+nav ul {
+  display: flex;
+  gap: 25px;
+  list-style: none;
+}
+
+nav a {
+  color: var(--muted);
+  text-decoration: none;
+  font-weight: 600;
+  transition: 0.25s;
+}
+
+nav a:hover,
+nav a.active {
+  color: var(--accent);
+}
+
+.menu-btn {
+  display: none;
+  font-size: 28px;
+  cursor: pointer;
+  color: var(--accent);
+}
+
+#modeToggle {
+  padding: 8px 12px;
+  border: 1px solid var(--border);
+  background: transparent;
+  color: var(--accent);
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+/* ============================
+   GLASS SECTIONS
+============================ */
+.glass {
+  background: var(--card);
+  border: 1px solid var(--border);
+  backdrop-filter: blur(14px);
+  padding: 35px;
+  border-radius: 16px;
+  margin-bottom: 30px;
+  box-shadow: 0 6px 40px rgba(0, 0, 0, 0.4);
+  opacity: 0;
+  transform: translateY(30px);
+  transition: 0.8s ease;
+}
+
+.glass.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ============================
+   HOME SECTION
+============================ */
+.home {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 50px;
+  flex-wrap: wrap;
+  padding: 50px 30px;
+  text-align: left;
+  position: relative;
+}
+
+.home .text h1 {
+  font-size: 3rem;
+  margin: 10px 0;
+}
+
+.home .text h3 {
+  font-size: 1.4rem;
+  color: var(--accent);
+}
+
+.home .text p {
+  margin: 15px 0 25px;
+  color: var(--text);
+  max-width: 500px;
+}
+
+.home .profile img {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 3px solid var(--accent);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.home .profile img:hover {
+  transform: scale(1.05);
+  box-shadow: 0 12px 30px rgba(0, 234, 255, 0.2);
+}
+
+.floating-shapes {
+  position: absolute;
+  top: -20px;
+  right: -20px;
+  display: flex;
+  gap: 15px;
+  z-index: 0;
+}
+
+.floating-shapes span {
+  display: block;
+  width: 15px;
+  height: 15px;
+  background: var(--accent);
+  border-radius: 50%;
+  opacity: 0.5;
+  animation: float 6s infinite ease-in-out;
+}
+
+.floating-shapes span:nth-child(2) { animation-delay: 1s; }
+.floating-shapes span:nth-child(3) { animation-delay: 2s; }
+.floating-shapes span:nth-child(4) { animation-delay: 3s; }
+
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-20px); }
+}
+
+/* ============================
+   BUTTONS
+============================ */
+.btn {
+  padding: 12px 20px;
+  background: var(--accent);
+  border-radius: 10px;
+  text-decoration: none;
+  font-weight: 700;
+  color: #000;
+  transition: 0.3s;
+}
+
+.btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 15px rgba(0, 234, 255, 0.3);
+}
+
+.btn.outline {
+  border: 1px solid var(--accent);
+  background: transparent;
+  color: var(--accent);
+}
+
+/* ============================
+   PROJECT GRID
+============================ */
+.project-grid {
+  display: grid;
+  gap: 20px;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+}
+
+.project-card img {
+  width: 100%;
+  height: 160px;
+  object-fit: cover;
+  border-radius: 10px;
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
+
+.project-card img:hover {
+  transform: scale(1.05);
+  box-shadow: 0 15px 35px rgba(0, 234, 255, 0.2);
+}
+
+/* ============================
+   ABOUT ME SECTION
+============================ */
+.about-me {
+  display: flex;
+  align-items: center;
+  gap: 30px;
+  padding: 30px;
+  flex-wrap: wrap;
+  text-align: left;
+}
+
+.about-me .profile img {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 3px solid var(--accent);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.about-me .profile img:hover {
+  transform: scale(1.05);
+  box-shadow: 0 12px 30px rgba(0, 234, 255, 0.2);
+}
+
+.about-me .about-content {
+  flex: 1;
+}
+
+.about-me h1 {
+  font-size: 2rem;
+  margin-bottom: 15px;
+}
+
+.about-me p {
+  margin-bottom: 12px;
+  color: var(--text);
+}
+
+.about-me .skills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 15px;
+}
+
+.about-me .skill {
+  background-color: var(--accent);
+  color: #000;
+  padding: 8px 15px;
+  border-radius: 20px;
+  font-size: 0.9rem;
+  transition: 0.3s;
+}
+
+.about-me .skill:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(0, 234, 255, 0.2);
+}
+
+/* ============================
+   SKILL BARS
+============================ */
+.skill-item {
+  margin: 14px 0;
+}
+
+.progress {
+  background: #0e1726;
+  height: 13px;
+  border-radius: 50px;
+  padding: 3px;
+}
+
+.progress-bar {
+  width: 0%;
+  height: 100%;
+  background: linear-gradient(90deg, var(--accent), #09b4db);
+  border-radius: 50px;
+  transition: width 1.3s ease;
+}
+
+/* ============================
+   CONTACT FORM
+============================ */
+input,
+textarea {
+  background: var(--card);
+  border: 1px solid var(--border);
+  padding: 14px;
+  border-radius: 10px;
+  color: var(--text);
+}
+
+button[type="submit"] {
+  background: var(--accent);
+  border: none;
+  padding: 12px;
+  color: #000;
+  border-radius: 10px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+button[type="submit"]:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(0, 234, 255, 0.2);
+}
+
+/* ============================
+   CONTACT SECTION
+============================ */
+.contact {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 30px;
+  padding: 50px 30px;
+  text-align: center;
+}
+
+.contact h1 {
+  font-size: 2.5rem;
+  margin-bottom: 10px;
+}
+
+.contact p {
+  color: var(--muted);
+  margin-bottom: 30px;
+  max-width: 600px;
+}
+
+.contact-container {
+  display: flex;
+  gap: 40px;
+  flex-wrap: wrap;
+  justify-content: center;
+  width: 100%;
+}
+
+.contact-info,
+.contact-form {
+  flex: 1 1 300px;
+  padding: 25px;
+  border-radius: 16px;
+  background: var(--card);
+  border: 1px solid var(--border);
+  box-shadow: 0 6px 40px rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(14px);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.contact-info:hover,
+.contact-form:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 35px rgba(0, 234, 255, 0.2);
+}
+
+.contact-info h3 {
+  font-size: 1.6rem;
+  margin-bottom: 15px;
+}
+
+.contact-info p,
+.contact-info a {
+  font-size: 1rem;
+  color: var(--text);
+  margin-bottom: 10px;
+  text-decoration: none;
+}
+
+.contact-info a:hover {
+  color: var(--accent);
+  text-decoration: underline;
+}
+
+/* Contact Form Inputs */
+.contact-form input,
+.contact-form textarea {
+  width: 100%;
+  margin-bottom: 15px;
+  padding: 14px 20px;
+  border-radius: 12px;
+  border: 1px solid var(--border);
+  background: var(--card);
+  color: var(--text);
+  font-size: 1rem;
+  transition: 0.3s;
+}
+
+.contact-form input:focus,
+.contact-form textarea:focus {
+  border-color: var(--accent);
+  outline: none;
+  box-shadow: 0 0 10px rgba(0, 234, 255, 0.3);
+}
+
+.contact-form button {
+  width: 100%;
+  padding: 14px;
+  border-radius: 12px;
+  border: none;
+  font-weight: 700;
+  font-size: 1rem;
+  color: #000;
+  background: var(--accent);
+  cursor: pointer;
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.contact-form button:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 25px rgba(0, 234, 255, 0.3);
+}
+
+/* Responsive Contact */
+@media (max-width: 900px) {
+  .contact-container {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .contact-info,
+  .contact-form {
+    width: 100%;
+  }
+}
+
+/* ============================
+   PRELOADER
+============================ */
+.preloader {
+  position: fixed;
+  inset: 0;
+  background: var(--bg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9995;
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+/* ============================
+   RESPONSIVE MENU
+============================ */
+@media (max-width: 800px) {
+  .menu-btn {
+    display: block;
+  }
+
+  nav ul {
+    display: none;
+    position: absolute;
+    right: 25px;
+    top: 75px;
+    background: var(--card);
+    padding: 20px;
+    border-radius: 12px;
+    flex-direction: column;
+    width: 180px;
+  }
+
+  nav ul.open {
+    display: flex;
+  }
+
+  .home,
+  .about-me {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .about-me .about-content {
+    width: 100%;
+  }
+
+  .home .text h1 {
+    font-size: 2.5rem;
+  }
+
+  .home .profile {
+    margin-top: 20px;
+  }
+}
+
+/* ============================
+   FOOTER
+============================ */
+.footer {
+  padding: 25px 40px;
+  text-align: center;
+  border-top: 1px solid var(--border);
+  margin-top: 50px;
+  backdrop-filter: blur(14px);
+  border-radius: 16px 16px 0 0;
+  background: var(--card);
+  color: var(--muted);
+  transition: 0.3s;
+}
+
+.footer .footer-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+
+.footer .socials {
+  display: flex;
+  gap: 20px;
+}
+
+.footer .socials a {
+  color: var(--accent);
+  text-decoration: none;
+  font-weight: 600;
+  transition: 0.25s;
+}
+
+.footer .socials a:hover {
+  color: #fff;
+  transform: translateY(-2px);
+}
